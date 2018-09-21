@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
 }
 
+apply plugin: 'jacoco'
+
+
 group 'com.fanoyong'
 version '1.0-SNAPSHOT'
 
@@ -23,3 +26,11 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
